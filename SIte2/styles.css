@@ -1,0 +1,345 @@
+body {
+    /* margin-left: 10%;  margin 
+    /* margin-right: 10%; */
+    font-family: 'Courier New', monospace;
+    background-color: #ff9933; /* Pale orange background */
+    overflow: hidden;
+    margin: 0;
+   
+}
+
+#content {
+    width: 100%;
+    box-sizing: border-box;
+    background-image: url('images/Homepage\ no\ BG.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: calc(100vh - 60px);
+    margin: 0;
+    z-index: 1;
+    position: relative; /* Ensure proper positioning */
+}
+
+@media (max-width: 600px) {
+    body {
+        margin-left: 0;
+        margin-right: 0;
+        overflow: hidden;
+    }}
+
+ #navbar {
+        width: 100%;
+        background-color: #ff99cc;
+        color: #fff;
+        padding-left: 0px; 
+        box-sizing: border-box;
+        position: fixed;
+        top: 0;
+        z-index: 1000; /* Higher z-index for the navbar */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: 'Delicious Handrawn', sans-serif;
+    }
+    
+  
+    
+
+/* Media query for viewport smaller than 600px */
+@media (max-width: 600px) {
+    #navbar {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .hide-on-small-screen {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    #content {
+        background-repeat: no-repeat;
+     
+        object-fit: contain;
+
+
+    }
+
+}
+
+
+#logo img {
+    width: 30%; /* Set the width of your logo */
+    height: 30%; /* Maintain the aspect ratio */
+    padding-left: 3%;
+
+     /*margin-right: 10px;  Adjust spacing between logo and H1 */
+}
+
+
+/* Your existing CSS styles go here */
+
+/* Your existing CSS styles go here */
+
+/* Add the following styles for the soft inflation effect and angled menu items */
+#navbar ul a {
+    transition: transform 0.3s ease;
+    display: inline-block;
+    position: relative;
+    rotate: 20deg;
+}
+
+
+    #navbar ul a:hover {
+        transform: scale(1.1) rotate(100%); /* Adjust the rotation angle as needed */
+    
+}
+
+/* Your other existing styles continue below */
+
+
+
+
+#navbar h1 {
+    margin: 0;
+}
+
+#navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+#navbar li {
+    margin-right: 20px;
+}
+
+#navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 24px;
+   
+}
+
+
+
+#navbar ul a {
+    transition: transform 0.3s ease;
+}
+
+#navbar ul a:hover {
+    transform: scale(1.1);
+}
+
+#menu-btn {
+    font-size: 50px;
+    cursor: pointer;
+    display: none;
+    padding: 1vh;
+    color: white(130, 130, 255, 0.441);
+}
+
+#navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+/*
+#navbar li {
+    margin-right: 15px;
+} */
+
+@media screen and (max-width: 600px) {
+    #navbar ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background-color: #ffbb8b;
+        padding: 10px;
+    }
+
+    #navbar ul.active {
+        display: flex;
+    }
+
+    #navbar li {
+        margin-right: 5px;
+        margin-bottom: 30px;
+       position: 
+    }
+
+    #menu-btn {
+        display: block;
+    }
+}
+
+
+#content {
+    margin-top: 60px;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px;
+}
+
+#newsletter-form {
+    position: fixed;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    max-width: 300px;
+    background: #f8d7da; /* Light red background color */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#newsletter-form h2 {
+    margin-bottom: 10px;
+}
+
+#newsletter-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#newsletter-form button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#instagram-link {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#instagram-link a {
+    display: block; /* Make the link a block element */
+    margin-top: 10px;
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1001; /* Set a higher z-index */
+    width: 500vh;
+    height: 500vh;
+    max-width: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+    user-select: none;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the pop-up box */
+}
+
+
+.popup .popup-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    cursor: move;
+    user-select: none;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popup h2 {
+    margin: 0;
+}
+
+.popup button.popup-close-btn {
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px; /* Rounded edges */
+    padding: 6px 10px; /* Adjusted padding for better fit */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Drop shadow */
+    text-decoration: underline; /* Underline added */
+}
+
+.popup div {
+    position: relative;
+}
+
+.popup p {
+    margin-top: 20px;
+    margin-bottom: 20px; /* Add margin at the bottom */
+}
+
+@media only screen and (max-width: 600px) {
+    .popup {
+        padding: 5px;
+        max-width: 250px;
+        max-height: 70vh;
+    }
+}
+
+/* Styles for the draggable image boxes */
+.draggable-image-box {
+    position: fixed;
+    width: 200px;
+    height: 200px;
+    border: transparent;
+    overflow: hidden;
+    cursor: grab;
+}
+
+#draggable-image-box-1 {
+    top: 10%;
+    left: 10%;
+}
+
+#draggable-image-box-2 {
+    top: 30%;
+    left: 28%
+}
+#draggable-image-box-3 {
+    top: 20%;
+    right: 40%;
+}
+
+#draggable-image-box-4 {
+    top: 20%;
+    right: 20%;
+}
+
+#draggable-image-box-5 {
+    top: 10%;
+    right: 10%;
+    transform: scaleX(-1);
+}
+
+/* Styles for the draggable images */
+.draggable-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@media screen and (max-width: 600px) {
+    .draggable-image {
+        display: none;
+    }
+}

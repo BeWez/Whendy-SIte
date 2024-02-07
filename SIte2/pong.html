@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pong Game</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #ff9933;
+      overflow: hidden;
+      font-family: monospace;
+    }
+
+    canvas {
+      border: 2px solid #ffffff;
+      display: block;
+      margin: 20px auto;
+      z-index: 1;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 10px;
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      font-family: monospace;
+    }
+
+    #score {
+      color: #fff;
+      font-size: 24px;
+      text-align: center;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      margin-top: 10vh ;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="pongCanvas" width="800" height="400"></canvas>
+  <div id="score"></div>
+  <button id="startButton">Start Game</button>
+
+  <script>
+    const canvas = document.getElementById("pongCanvas");
+    const ctx = canvas.getContext("2d");
+
+    const paddleWidth = 10;
+    const paddleHeight = 60;
+    const ballSize = 10;
+    const targetScore = 5;
+
+    let playerY = canvas.height / 2 - paddleHeight / 2;
+    let computerY = canvas.height / 2 - paddleHeight / 2;
+    let ballX = canvas.width / 2;
+    let ballY = canvas.height / 2;
+    let ballSpeedX = 5;
+    let ballSpeedY = 5;
+    let whendyScore = 0;
+    let dragonScore = 0;
+    let gameRunning = false;
+
+    const scoreDisplay = document.getElementById("score");
+    const startButton = document.getElementById("startButton");
+
+    startButton.addEventListener("click", startGame);
+    canvas.addEventListener("mousemove", handleMouseMove);
+
+    function startGame() {
+      if (!gameRunning) {
+        gameRunning = true;
+        startButton.style.display = "none";
+        resetGame();
+        gameLoop();
+      }
+    }
+
+    function resetGame() {
+      playerY = canvas.height / 2 - paddleHeight / 2;
+      computerY = canvas.height / 2 - paddleHeight / 2;
+      ballX = canvas.width / 2;
+      ballY = canvas.height / 2;
+      ballSpeedX = 5;
+      ballSpeedY = 5;
+      whendyScore = 0;
+      dragonScore = 0;
+    }
+
+    function handleMouseMove(event) {
+      const mouseY = event.clientY - canvas.getBoundingClientRect().top;
+      playerY = mouseY - paddleHeight / 2;
+
+      // Ensure paddle stays within the canvas
+      if (playerY < 0) {
+        playerY = 0;
+      } else if (playerY + paddleHeight > canvas.height) {
+        playerY = canvas.height - paddleHeight;
+      }
+    }
+
+    function displayScore() {
+      scoreDisplay.textContent = `Whendy ${whendyScore} - ${dragonScore} Slay`;
+    }
+
+    function checkWin() {
+      if (whendyScore >= targetScore || dragonScore >= targetScore) {
+        alert(`${whendyScore > dragonScore ? "Whendy" : "Slay the Dragon"} wins the game!`);
+        gameRunning = false;
+        startButton.style.display = "block";
+      }
+    }
+
+    function update() {
+      // Move computer paddle
+      if (ballY > computerY + paddleHeight / 2) {
+        computerY += 5;
+      } else {
+        computerY -= 5;
+      }
+
+      // Move ball
+      ballX += ballSpeedX;
+      ballY += ballSpeedY;
+
+      // Ball collision with top and bottom walls
+      if (ballY - ballSize < 0 || ballY + ballSize > canvas.height) {
+        ballSpeedY = -ballSpeedY;
+      }
+
+      // Ball collision with paddles
+      if (
+        (ballX - ballSize < paddleWidth && ballY > playerY && ballY < playerY + paddleHeight) ||
+        (ballX + ballSize > canvas.width - paddleWidth && ballY > computerY && ballY < computerY + paddleHeight)
+      ) {
+        ballSpeedX = -ballSpeedX;
+      }
+
+      // Computer difficulty adjustment
+      if (computerY < 0) {
+        computerY = 0;
+      } else if (computerY + paddleHeight > canvas.height) {
+        computerY = canvas.height - paddleHeight;
+      }
+
+      // Check if the ball goes out of bounds
+      if (ballX - ballSize < 0) {
+        dragonScore++;
+        resetBall();
+      } else if (ballX + ballSize > canvas.width) {
+        whendyScore++;
+        resetBall();
+      }
+
+      displayScore();
+      checkWin();
+    }
+
+    function resetBall() {
+      ballX = canvas.width / 2;
+      ballY = canvas.height / 2;
+      ballSpeedX = -ballSpeedX; // Change direction after scoring
+    }
+
+    function draw() {
+      // Draw astroturf background
+      const astroturfImage = new Image();
+      astroturfImage.src = 'images/url.jpeg'; // Replace with the actual filename of your astroturf image
+      ctx.drawImage(astroturfImage, 0, 0, canvas.width, canvas.height);
+
+      // Draw paddles
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(0, playerY, paddleWidth, paddleHeight);
+      ctx.fillRect(canvas.width - paddleWidth, computerY, paddleWidth, paddleHeight);
+
+      // Draw ball
+      ctx.beginPath();
+      ctx.arc(ballX, ballY, ballSize, 0, Math.PI * 2);
+      ctx.fillStyle = "#fff";
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function gameLoop() {
+      draw();
+      update();
+
+      if (gameRunning) {
+        requestAnimationFrame(gameLoop);
+      }
+    }
+  </script>
+</body>
+</html>

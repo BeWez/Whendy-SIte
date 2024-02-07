@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" href="images/Favicon copy.png" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.cdnfonts.com/css/delicious-handrawn" rel="stylesheet">
+    <title>Whendy</title>
+    <style>
+        body {
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-image: url('images/Burnt\ Sienna\ BG.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: black;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: monospace;
+        }
+
+        input {
+            width: 200px; /* Set the same width for both input and button */
+  padding-top: 15px;
+
+    background-color: rgba(255, 255, 255, 0.592);
+    border: none;
+    margin-bottom: -1px;
+}
+
+button {
+    width: 200px; /* Set the same width for both input and button */
+    background-color: #7f54d1;
+    color: white;
+    border: none;
+    font-family: monospace;
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: -1px;
+}
+
+        #welcome-message {
+            background: none;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 40px;
+            text-shadow: -1px -0.1px 0 #000, 1px -1px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+        }
+
+        #welcome-message a {
+            color: black;
+            text-decoration: underline;
+            font-size: 30px;
+            text-shadow: none;
+        }
+
+        @import url('https://fonts.cdnfonts.com/css/bitterslide-evelwhite');
+        #welcome-message span {
+            font-family: 'Bitterslide EvelWhite';
+        }
+
+        .container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column; /* Added to stack elements vertically */
+        }
+
+        .container img {
+        max-width: 200%; /* Adjust as needed */
+        max-height: 200%; /* Adjust as needed */
+     
+        margin-left: 10%;
+    }
+
+        .code-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            white-space: pre-wrap;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 80%;
+                height: auto;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <img src="images/Pow.png" alt="Image Description">
+    <div class="code-overlay">
+        <div id="login-form">
+            <input type="password" id="password" required onkeypress="handleKeyPress(event)">
+            <button onclick="checkPassword()">Enter The World <br>of <b><i>Whendy</i></b></button>
+        </div>
+    </div>
+</div>
+
+
+<script>
+function checkPassword() {
+    var passwordInput = document.getElementById("password");
+    var body = document.body;
+
+    console.log("Entered password: ", passwordInput.value);
+
+    if (passwordInput.value === "Whendy") {
+        body.style.backgroundImage = "url('https://www.onlygfx.com/wp-content/uploads/2020/07/dust-overlay-5.png')";
+        document.getElementById("login-form").style.display = "none";
+     
+        document.getElementById("password").blur();
+        // Check if the condition is met
+        console.log("Redirecting to index.html");
+        // Redirect to index.html
+        window.location.href = "index.html";
+    } else {
+        alert("Incorrect password. Try again.");
+    }
+}
+function handleKeyPress(event) {
+        if (event.key === "Enter") {
+            checkPassword();
+        }
+    }
+
+</script>
+
+</body>
+</html>
+
+</body>
+</html>

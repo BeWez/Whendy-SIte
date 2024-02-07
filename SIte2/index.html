@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whendy</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.cdnfonts.com/css/delicious-handrawn" rel="stylesheet">
+                
+</head>
+<body>
+
+    <!-- Navbar -->
+    <div id="navbar">
+        <div id="logo">
+            <a href="login.html"><img src="images/logo.png" alt="Whendy Logo"></a>
+
+        </div>
+        <div id="menu-btn" onclick="toggleMenu()">&#9776; </div>
+       
+        <ul>
+            <li><a href="#" onclick="showPopup('About')">About</a></li>
+            <li><a href="#" onclick="showPopup('Music')">Music</a></li>
+            <li><a id="Deck" href="DeckCompressedFeb6_compressed.pdf" target="_blank">Deck</a></li>
+            <li><a id="youtube-link" href="https://www.youtube.com/watch?v=jAnYwtzjWxo" target="_blank">Storyboard</a></li>
+            <li class="hide-on-small-screen"><a id="pong" href="pong.html" target="_blank">Pong</a></li>
+
+            
+        </ul>
+    </div>
+
+    <!-- Content -->
+    <div id="content">
+        <!-- Draggable Image Boxes -->
+        <div id="draggable-image-box-1" class="draggable-image-box">
+            <img class="draggable-image" src="images/Cloud 1.png" alt="Draggable Image 1">
+        </div>
+
+        <div id="draggable-image-box-2" class="draggable-image-box">
+            <img class="draggable-image" src="images/Cloud 2.png" alt="Draggable Image 2">
+        </div>
+
+        <div id="draggable-image-box-3" class="draggable-image-box">
+            <img class="draggable-image" src="images/Cloud 3.png" alt="Draggable Image 3">
+        </div>
+
+        <div id="draggable-image-box-4" class="draggable-image-box">
+            <img class="draggable-image" src="images/Cloud 4.png" alt="Draggable Image 4">
+        </div>
+
+        <div id="draggable-image-box-5" class="draggable-image-box">
+            <img class="draggable-image" src="images/Cloud 2.png" alt="Draggable Image 5">
+        </div>
+    </div>
+
+    <!-- Popups -->
+    <div id="about-popup" class="popup">
+        <div class="popup-header">
+            <h2>About</h2>
+        </div>
+        <div class="popup-content">
+            <p>
+                <br> 
+               <b>BUG</b>, <b>GOOSE</b> and <b>NEWT</b> are a band called
+<b>WHENDY</b>. They rehearse in a <b>WHENDY HOUSE</b>
+owned by their dragon landlord SLAY.
+Though they try, their rehearsals are
+always interrupted by something - or
+often someone.
+<br> <br>
+
+                <i>“After years of dedicating our 
+                lives to music, unable to create                 
+                free of judgment, we became                
+                self-induced prisoners to
+                perfectionism. That got old and 
+                so did we.” </i> - <b>Ben, Katie and Scott <i>a.k.a Whendy</i></b>
+            </p>
+            <!-- Add more content here if needed -->
+        </div>
+        <button class="popup-close-btn" onclick="closePopup('About')">Close</button>
+    </div>
+
+    <div id="music-popup" class="popup">
+        <div class="popup-header">
+            <h2>Music</h2>
+        </div>
+        <div class="popup-content">
+            <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1738922883%3Fsecret_token%3Ds-LqNT4buvkqt&color=%23e893f2&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+            <div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;">
+                <a href="https://soundcloud.com/whendywhen" title="Whendy" target="_blank" style="color: #cccccc; text-decoration: none;">Whendy</a> · <a href="https://soundcloud.com/whendywhen/sets/s01e01-pilot-songs/s-LqNT4buvkqt" title="S01E01 ~ Pilot Songs" target="_blank" style="color: #cccccc; text-decoration: none;">S01E01 ~ Pilot Songs</a>
+            </div>
+        </div>
+        <button class="popup-close-btn" onclick="closePopup('Music')">Close</button>
+    </div>
+
+    <div id="live-popup" class="popup">
+        <div class="popup-header">
+            <h2>Live</h2>
+        </div>
+        <div class="popup-content">
+            <p>Playing Live at TBC - date</p>
+        </div>
+        <button class="popup-close-btn" onclick="closePopup('Live')">close</button>
+    </div>
+
+    <script src="float.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
